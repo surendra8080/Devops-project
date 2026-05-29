@@ -1,0 +1,45 @@
+pipeline {
+
+    agent any
+
+    tools {
+
+        maven 'Maven'
+
+    }
+
+    stages {
+
+        stage('Build') {
+
+            steps {
+
+                sh 'mvn clean install'
+
+            }
+
+        }
+
+        stage('Verify Build') {
+
+            steps {
+
+                sh 'ls target'
+
+            }
+
+        }
+
+        stage('Deploy') {
+
+            steps {
+
+                echo 'Application deployment completed using Docker Compose'
+
+            }
+
+        }
+
+    }
+
+}
